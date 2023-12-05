@@ -1,63 +1,33 @@
-
-import React, { useState } from 'react';
-import axios from 'axios';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import './App.css';
+import React , { useState }  from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './navbar';
+import Users from './Routes/Users';
+import DishList from './Routes/DishList';
+import ViewOrders from './Routes/View Orders';
+import Login from './Login'
+import './App.css'
 
-const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [phone_num, setPhone_num] = useState();
-  const handleLogin = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post('http://localhost:4000/adduser', {
-        username,
-        password,
-        phone_num
-      });
-
-      console.log('Server Response:', JSON.stringify(response.data));
-    } catch (error) {
-      console.error('Error:', error.message);
-    }
-  };
+const App = () => {
+  const [loggedIn, setLoggedIn] = useState(false); // State to track login status
 
   return (
     <Router>
-    <div className='App'>
-    <Navbar/>
-      <h2>Welcome to ColabKitchen</h2>
-      <form  onSubmit={handleLogin}>
-        <label>
-          Username:
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>Phone No:-</label>
-        <input type="number" value={phone_num} onChange={(e)=>{setPhone_num(e.target.value)}}/>
-        <br/>
-        <button type="submit">Login</button>
-      </form>
-     
-    </div>
+      <div className='App'>
+        <Navbar />  
+        <Routes>
+        
+          <Route path="/users" element={<Users/>} />
+          <Route path="/dishes" element={<DishList/>} />
+          <Route path="/contact" element={<ViewOrders/>} />
+         
+        </Routes>
+        {!loggedIn && <Login setLoggedIn={setLoggedIn}/>} {/* Conditionally render Login component */}
+ 
+      </div>
     </Router>
   );
 };
 
-export default Login;
+export default App;
+
+

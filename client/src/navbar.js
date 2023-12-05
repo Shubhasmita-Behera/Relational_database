@@ -1,20 +1,35 @@
 // Navbar.js
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Users from './Routes/Users';
-import DishList from './Routes/DishList';
-import ViewOrders from './Routes/View Orders';
+// import { Link } from 'react-router-dom';
+// import Users from './Routes/Users';
+// import DishList from './Routes/DishList';
+// import ViewOrders from './Routes/View Orders';
+
+// const Navbar = () => {
+//   return (
+//     <nav>
+//       <ul>
+//         <li><Link to="/users"><Users /></Link></li>
+//         <li><Link to="/dishes"><DishList/></Link></li>
+//         <li><Link to="/contact"><ViewOrders/></Link></li>
+//       </ul>
+//     </nav>
+//   );
+// };
+
 
 const Navbar = () => {
   return (
     <nav>
       <ul>
-        <li><Link to="/users"><Users /></Link></li>
-        <li><Link to="/dishes"><DishList/></Link></li>
-        <li><Link to="/contact"><ViewOrders/></Link></li>
+        <li><a href="/users" target="_blank" rel="noopener noreferrer">Users</a></li>
+        <li><a href="/dishes" target="_blank" rel="noopener noreferrer">Dishes</a></li>
+        <li><a href="/contact" target="_blank" rel="noopener noreferrer">Contact</a></li>
       </ul>
     </nav>
   );
 };
+
+
 
 export default Navbar;
