@@ -4,9 +4,11 @@ import axios from 'axios';
 const Login = ({ setLoggedIn }) =>  {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [phone_num, setPhone_num] = useState();
+   
     const handleLogin = async (e) => {
       e.preventDefault();
+      console.log("LogIn true");
+     
   
       try {
         const response = await axios.post('http://localhost:4000/adduser', {
@@ -45,9 +47,7 @@ const Login = ({ setLoggedIn }) =>  {
             />
           </label>
           <br />
-          <label>Phone No:-</label>
-          <input type="number" value={phone_num} onChange={(e)=>{setPhone_num(e.target.value)}}/>
-          <br/>
+          
           <button type="submit">Login</button>
         </form>
        
